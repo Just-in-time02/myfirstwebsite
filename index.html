@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add Two Numbers</title>
+  <title>Number Guessing Game</title>
 </head>
 <body>
-  <h1>Add Two Numbers</h1>
+  <h1>Number Guessing Game</h1>
+  <p>I'm thinking of a number between 1 and 100.</p>
   <form>
-    <label for="num1">Number 1:</label>
-    <input type="number" id="num1" value=""><br><br>
-    <label for="num2">Number 2:</label>
-    <input type="number" id="num2" value=""><br><br>
-    <button onclick="addNumbers()">Add</button>
+    <label for="guess">Guess a number:</label>
+    <input type="number" id="guess" value=""><br><br>
+    <button onclick="checkGuess()">Guess</button>
     <p id="result"></p>
   </form>
 
   <script>
-    function addNumbers() {
-      var num1 = parseInt(document.getElementById("num1").value);
-      var num2 = parseInt(document.getElementById("num2").value);
-      var sum = num1 + num2;
-      document.getElementById("result").innerHTML = "The sum is: " + sum;
+    var secretNumber = Math.floor(Math.random() * 100) + 1;
+
+    function checkGuess() {
+      var userGuess = parseInt(document.getElementById("guess").value);
+      if (userGuess === secretNumber) {
+        document.getElementById("result").innerHTML = " Congratulations! You guessed the correct number: " + secretNumber;
+      } else if (userGuess < secretNumber) {
+        document.getElementById("result").innerHTML = "Too low! Try again.";
+      } else {
+        document.getElementById("result").innerHTML = "Too high! Try again.";
+      }
     }
   </script>
 </body>
