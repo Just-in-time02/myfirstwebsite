@@ -15,15 +15,16 @@
 
   <script>
     var secretNumber = Math.floor(Math.random() * 100) + 1;
+    var resultParagraph = document.getElementById("result");
 
     function checkGuess() {
       var userGuess = parseInt(document.getElementById("guess").value);
       if (userGuess === secretNumber) {
-        document.getElementById("result").innerHTML = " Congratulations! You guessed the correct number: " + secretNumber;
+        resultParagraph.innerHTML += "<br>Congratulations! You guessed the correct number: " + secretNumber;
       } else if (userGuess < secretNumber) {
-        document.getElementById("result").innerHTML = "Too low! Try again.";
+        resultParagraph.innerHTML += "<br>Too low! Try again.";
       } else {
-        document.getElementById("result").innerHTML = "Too high! Try again.";
+        resultParagraph.innerHTML += "<br>Too high! Try again.";
       }
     }
   </script>
